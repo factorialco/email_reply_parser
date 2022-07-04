@@ -136,8 +136,8 @@ class EmailReplyParser
 
   private
     EMPTY = "".freeze
-    SIGNATURE = '(?m)(--\s*$|__\s*$|\w-$)|(^(\w+\s+){1,3}ym morf tneS$)'
-    SIG_REGEX = Regexp.new(SIGNATURE)
+    SIGNATURE = '(?m)(--\s*$|__\s*$|\w-$)|(^(\w+\s+){1,3}ym morf tneS$)'.freeze
+    SIG_REGEX = Regexp.new(SIGNATURE).freeze
     MULTILINE_QUOTE_HEADER_EXPRESSIONS = [
       # English
       /(^On\s((?!On).)*wrote:$)$/m,
@@ -149,7 +149,7 @@ class EmailReplyParser
       /(?!Am.*Am\s.+?schrieb.*:)(Am\s(.+?)schrieb.*:)/m,
       # Italian
       /(?!Il.*Il\s.+?scritto.*:)(Il[\s\S]+?(.+?)scritto:)/m
-    ]
+    ].freeze
     QUOTE_HEADER_REGULAR_EXPRESSIONS = [
       # English
       /^On.*wrote:$/,
@@ -164,7 +164,7 @@ class EmailReplyParser
       /[a-zA-Z]{2,5}.*schrieb.*:$/,
       # Italian
       /^Il.+?ha scritto:$/
-    ]
+    ].freeze
 
     ### Line-by-Line Parsing
 
