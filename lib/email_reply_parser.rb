@@ -82,7 +82,7 @@ class EmailReplyParser
 
       # Normalize line endings.
       text.gsub!("\r\n", "\n")
-      
+
       # Check for multi-line reply headers. Some clients break up
       # the "On DATE, NAME <EMAIL> wrote:" line into multiple lines.
       MULTILINE_QUOTE_HEADER_EXPRESSIONS.each do |expr|
@@ -146,9 +146,9 @@ class EmailReplyParser
       # French
       /(?!Le.*Le\s.+?a écrit[a-zA-Z0-9.:;<>()&@ -]*:)(Le\s(.+?)a écrit[a-zA-Z0-9.:;<>()&@ -]*:)/m,
       # German
-      /(?!Am.*Am\s.+?schrieb.*:)(Am\s(.+?)schrieb.*:)/m,
+      /(?!Am.*Am\s.+?schrieb[^:]*:)(Am\s(.+?)schrieb[^:]*:)/m,
       # Italian
-      /(?!Il.*Il\s.+?scritto.*:)(Il[\s\S]+?(.+?)scritto:)/m
+      /(?!Il.*Il\s.+?scritto[^:]*:)(Il[\s\S]+?(.+?)scritto:)/m
     ].freeze
     QUOTE_HEADER_REGULAR_EXPRESSIONS = [
       # English
@@ -161,7 +161,7 @@ class EmailReplyParser
       /Le.*a écrit.*[> ]:$/m,
       /^(De|A|Envoyé|Objet)\s*:.*$/m,
       # German
-      /[a-zA-Z]{2,5}.*schrieb.*:$/,
+      /[a-zA-Z]{2,5}.*schrieb[^:]*:$/,
       # Italian
       /^Il.+?ha scritto:$/
     ].freeze

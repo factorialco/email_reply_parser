@@ -225,7 +225,7 @@ I am currently using the Java HTTP API.\n", reply.fragments[0].to_s
     assert_equal [false, true], reply.fragments.map { |f| f.quoted? }
     assert_equal [false, false], reply.fragments.map { |f| f.signature? }
   end
- 
+
   def test_quote_reply_spanish_multiline
     reply = email("quote_reply_spanish_multiline")
     assert_equal("This is a reply with Spanish quote multiline", reply.fragments[0].to_s)
