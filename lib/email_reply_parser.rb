@@ -148,7 +148,9 @@ class EmailReplyParser
       # German
       /(?!Am.*Am\s.+?schrieb[^:]*:)(Am\s(.+?)schrieb[^:]*:)/m,
       # Italian
-      /(?!Il.*Il\s.+?scritto[^:]*:)(Il[\s\S]+?(.+?)scritto:)/m
+      /(?!Il.*Il\s.+?scritto[^:]*:)(Il[\s\S]+?(.+?)scritto:)/m,
+      # Portuguese
+      /(?!Em.*Em\s.+?escreveu\s*:)(Em[\s\S]+?escre[a-zA-Z=\s]*:)/m
     ].freeze
     QUOTE_HEADER_REGULAR_EXPRESSIONS = [
       # English
@@ -163,7 +165,10 @@ class EmailReplyParser
       # German
       /[a-zA-Z]{2,5}.*schrieb[^:]*:$/,
       # Italian
-      /^Il.+?ha scritto:$/
+      /^Il.+?ha scritto:$/,
+      # Portuguese
+      /^Em.+?escre[a-zA-Z=\s]*:$/m,
+      /^(De|Enviado|Para|Assunto):.*$/m
     ].freeze
 
     ### Line-by-Line Parsing

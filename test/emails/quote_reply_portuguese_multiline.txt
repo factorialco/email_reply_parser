@@ -1,0 +1,8 @@
+This is a reply with Portuguese quote multiline
+
+Em qui., 20 de out. de 2022 =C3=A0s 09:37, Rick <rick@example.com> escre=
+veu:
+
+> Hello this is a test:
+> test
+>

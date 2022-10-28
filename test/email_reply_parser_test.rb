@@ -288,6 +288,22 @@ I am currently using the Java HTTP API.\n", reply.fragments[0].to_s
     assert_equal [false, false], reply.fragments.map { |f| f.signature? }
   end
 
+  def test_quote_reply_portuguese
+    reply = email('quote_reply_portuguese')
+    assert_equal('This is a reply with Portuguese quote', reply.fragments[0].to_s)
+    assert_equal [false, true], reply.fragments.map(&:hidden?)
+    assert_equal [false, true], reply.fragments.map(&:quoted?)
+    assert_equal [false, false], reply.fragments.map(&:signature?)
+  end
+
+  def test_quote_reply_portuguese_multiline
+    reply = email('quote_reply_portuguese_multiline')
+    assert_equal('This is a reply with Portuguese quote multiline', reply.fragments[0].to_s)
+    assert_equal [false, true, true], reply.fragments.map(&:hidden?)
+    assert_equal [false, true, false], reply.fragments.map(&:quoted?)
+    assert_equal [false, false, false], reply.fragments.map(&:signature?)
+  end
+
   def test_pathological_emails
     t0 = Time.now
     email("pathological")
